@@ -1,0 +1,19 @@
+{
+  "name": "git-down",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "Redwan",
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "axios": "^1.13.2",
+    "commander": "^14.0.2",
+    "express": "^5.1.0",
+    "jszip": "^3.10.1",
+    "node-cache": "^5.1.2"
+  }
+}
