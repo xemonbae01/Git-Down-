@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 - Page Not Found</title>
+  <meta name="description" content="404 - Page Not Found">
+  <link rel="shortcut icon" href="https://telegra.ph/file/278f19dd99ebc79c85140.png"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: {
+              950: '#09090b',
+              900: '#101014',
+              850: '#141418',
+              800: '#18181c',
+              700: '#1f1f23',
+            },
+            primary: {
+              500: '#8b5cf6',
+              400: '#a78bfa',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Poppins', 'sans-serif'],
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            blink: {
+              '0%, 100%': { opacity: 1 },
+              '50%': { opacity: 0 },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { textShadow: '0 0 8px #a78bfa' },
+              '50%': { textShadow: '0 0 16px #8b5cf6' },
+            }
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.8s ease forwards',
+            blink: 'blink 0.7s infinite',
+            float: 'float 4s ease-in-out infinite',
+            pulseGlow: 'pulseGlow 2.5s infinite ease-in-out',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    .typed-text {
+      background: linear-gradient(90deg, #a78bfa, #8b5cf6, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-850 text-gray-200 font-sans overflow-hidden">
+
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-10">
+    <p class="text-[30vh] font-heading font-bold text-primary-500 blur-sm">404</p>
+  </div>
+
+  <div class="text-center p-8 max-w-lg animate-float relative z-10">
+
+    <div class="mb-6 animate-fadeIn">
+      <p class="text-3xl sm:text-4xl font-heading font-bold drop-shadow-lg">
+        <span class="typed-text"></span>
+        <span class="cursor inline-block w-1 bg-gray-200 ml-1 animate-blink"></span>
+      </p>
+    </div>
+
+    <hr class="border-gray-700 mx-auto w-3/4 mb-6">
+
+    <div class="animate-fadeIn" style="animation-delay: 0.5s;">
+      <p class="text-lg text-gray-300">
+        Go back to
+        <a href="/docs" class="underline text-primary-400 hover:text-primary-300 transition-colors">
+          Docs
+        </a>.
+      </p>
+    </div>
+
+    <div class="mt-6 animate-fadeIn" style="animation-delay: 0.8s;">
+      <a href="/" class="px-6 py-3 rounded-lg bg-primary-500 hover:bg-primary-400 transition-all shadow-lg shadow-primary-900/30">
+        Return Home
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
+    const textArray = ["Page Not Found", "Error 404", "Lost in the Void"];
+    const typingDelay = 120;
+    const erasingDelay = 80;
+    const newTextDelay = 1500;
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < textArray[textArrayIndex].length) {
+        if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        cursorSpan.classList.remove("typing");
+        setTimeout(erase, newTextDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        cursorSpan.classList.remove("typing");
+        textArrayIndex = (textArrayIndex + 1) % textArray.length;
+        setTimeout(type, typingDelay + 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if(textArray.length) setTimeout(type, 800);
+    });
+  </script>
+
+</body>
+  </html>
+  
