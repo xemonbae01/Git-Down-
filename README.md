@@ -52,3 +52,5 @@ Clone the repository:
 ```bash
 git clone https://github.com/xemonbae01/Git-Down-.git
 cd Git-Down-
+npm i
+npm start
